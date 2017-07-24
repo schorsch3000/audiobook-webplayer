@@ -43,7 +43,13 @@ const renderPl = () => {
     plr.play();
   });
 };
-$.get('playlist.json', pl => {
-  playlists = pl;
-  renderPl();
+$.get({
+  url: 'playlist.json',
+  success: pl => {
+    playlists = pl;
+    renderPl();
+  },
+}).fail(() => {
+  alert('cannot load playlist.json');
+  $('body').html(":-(").addClass("fail")
 });
