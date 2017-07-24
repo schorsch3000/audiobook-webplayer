@@ -1,0 +1,9 @@
+each data,folder in playlists
+    div.playlist
+        div.dir #{folder}
+        div.img
+            if data.images.length
+                img(src=data.images[0])
+        div.files
+            each file in data.files
+                div.file(data-file=encodeURI(folder+"/"+file) ) #{path.basename(file,".mp3")}
